@@ -1,0 +1,51 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #006400; /* Verde obscuro */
+    padding: 10px 20px;
+}
+
+header h1, header p {
+    color: white;
+    margin: 0;
+}
+
+nav {
+    background-color: #006400; /* Verde obscuro */
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.imagen {
+    margin-bottom: 20px;
+}
+
+.imagen img {
+    width: 100%;
+}
+.imagen-pequena {
+    width: 100px;
+    height: auto;
+}
+/* Estilos para las descripciones */
+.descripcion {
+    font-size: 14px;
+    margin-top: 5px;
+    display: block; /* Mostrar las descripciones como bloques */
+}
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conalep</title>
+    <link rel="stylesheet" type="text/css" href="conalepestilos.css">
+    
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Verdana, sans-serif;
+        }
+        img {
+            display: block; /* Para evitar espacio adicional debajo de la imagen */
+            margin: auto; /* Alinea la imagen al centro */
+        }
+        #logo {
+            width: 150px; 
+            height: auto; 
+        }
+
+        /* Estilos para las imágenes */
+        .imagen {
+            display: inline-block;
+            margin: 10px; /* Espacio entre imágenes */
+            border-radius: 15px; /* Hace que las imágenes sean más redondeadas */
+            overflow: hidden; /* Para que la imagen redondeada no se desborde */
+        }
+
+        /* Estilos para las descripciones */
+        .descripcion {
+            font-size: 14px;
+            margin-top: 5px;
+            display: block; /* Por defecto, las descripciones están ocultas */
+        }
+
+
+/* Estilos para el pie de página */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+footer p {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #fff;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo conalep.webp" alt="Logo del Conalep" id="logo">
+        <div>
+            <h1>Bienvenido al Conalep</h1>
+            <p>Centro de Educación Técnica Industrial</p>
+        </div>
+        <nav>
+            <a href="#" onclick="mostrarInicio()">Inicio</a>
+            <a href="#" onclick="mostrarHistoria()">Historia</a>
+            <a href="#" onclick="mostrarInstalaciones()">Nuestras Instalaciones</a>
+            <a href="#" onclick="mostrarEncuesta()">Encuesta</a>
+        </nav>
+        <select onchange="cambiarIdioma(this)">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+        </select>
+    </header>
+    <main>
+        <section id="inicio">
+            <h2>Inicio</h2>
+            <p>
+                El Colegio Nacional de Educación Profesional Técnica (CONALEP) es un sistema educativo mexicano de nivel medio superior.
+                Ofrece programas de bachillerato tecnológico con enfoque en áreas técnicas y profesionales.
+            </p>
+            <p>
+                Los programas de estudio están diseñados para brindar a los estudiantes habilidades prácticas y conocimientos
+                teóricos relevantes para el mercado laboral.
+            </p>
+            <div class="imagen">
+                <img src="imagen4.jpeg" alt="Descripción de la imagen" style="width: 500px; height: auto;">
+                <figcaption class="descripcion"></figcaption>
+            </div>
+        </section>
+        <section id="historia" style="display: none;">
+            <h2>Historia del Conalep</h2>
+            <p>
+                El Colegio Nacional de Educación Profesional Técnica (CONALEP) fue establecido en México en 1978 como un sistema nacional de educación técnica. Surgió de la necesidad de proporcionar una educación técnica de alta calidad para satisfacer las demandas de una economía en crecimiento. CONALEP ofrece programas de bachillerato técnico y carreras técnicas superiores en una variedad de áreas. Ha expandido su red de planteles en todo el país y desempeña un papel importante en la formación de profesionales técnicos para contribuir al desarrollo económico y social de México.
+            </p>
+            <div class="imagen">
+                <img src="imagenconalep.jpg" alt="Descripción de la imagen" style="width: 250px; height: auto;">
+                <figcaption class="descripcion"></figcaption>
+            </div>
+        </section>
+        
+        <section id="instalaciones" style="display: none;">
+            <h2><center>Nuestras Instalaciones</center></h2>
+            <div class="imagen">
+                <img src="instalacion1.jpg.jpeg" alt="Entrada de nuestro plantel Conalep" style="width: 300px; height: auto;">
+                <figcaption class="descripcion"><center>Entrada del Plante Conalep Tepezala</center></figcaption>
+            </div>
+            <div class="imagen">
+                <img src="instalacion2.jpeg" alt="Descripción de la imagen" style="width: 240px; height: auto;">
+                <figcaption class="descripcion"><center>Areas verdes de nuestro Plantel</center></figcaption>
+            </div>
+            <div class="imagen">
+                <img src="imagen3.jpg" alt="Descripción de la imagen" style="width: 300px; height: auto;">
+                <figcaption class="descripcion"><center>Imagenes aereas de nuestro plantel</center></figcaption>
+            </div>
+            <div class="imagen">
+                <img src="imagen4.jpeg" alt="Descripción de la imagen" style="width: 300px; height: auto;">
+                <figcaption class="descripcion"><center>Imagenes aereas de nuestro plantel</center></figcaption>
+            </div>
+            <div class="imagen">
+                <img src="imagen5.jpeg" alt="Descripción de la imagen" style="width: 300px; height: auto;">
+                <figcaption class="descripcion"><center>Imagenes aereas de nuestro plantel</center></figcaption>
+            </div>
+        </section>
+        
+        <section id="encuesta" style="display: none;">
+            <h2>Encuesta</h2>
+            <iframe src="https://docs.google.com/forms/d/1m18kEvfJ3OOkNN07GTW44ls-nILoFUyY9guBmLlRYbE/edit" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
+        </section>
+    </main>
+    <footer>
+        <p>Creado por: Rene,Rodrigo,Victor,Rolando y Sergio</p>
+    </footer>
+    <script src="conalep.js"></script>
+</body>
+</html>

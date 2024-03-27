@@ -1,0 +1,43 @@
+from socket import *  # Importa todas las funciones de socket
+from threading import *  # Importa todas las funciones de threading
+
+clientes = set()  # Conjunto para almacenar los sockets de los clientes conectados
+
+# Función que maneja la comunicación con un cliente específico
+def clientThread(clientSocket, clientAddress):
+    while True:
+        message = clientSocket.recv(1024).decode("utf-8")  # Recibe datos del cliente y los decodifica
+        print(clientAddress[0] + ":" + str(clientAddress[1]) +" Dice: "+ message)  # Imprime el mensaje recibido
+
+        # Envía el mensaje recibido a todos los otros clientes conectados
+        for client in clientes:
+            if client is not clientSocket:
+                client.send((clientAddress[0] + ":" + str(clientAddress[1]) +" Dice: "+ message).encode("utf-8"))
+
+        # Verifica si el mensaje está vacío, indicando que el cliente se ha desconectado
+        if not message:
+            clientes.remove(clientSocket)  # Elimina el socket del cliente desconectado
+            print(clientAddress[0] + ":" + str(clientAddress[1]) +" desconectado")  # Imprime mensaje de desconexión
+            break
+
+    clientSocket.close()  # Cierra el socket del cliente
+
+hostSocket = socket(AF_INET, SOCK_STREAM)  # Crea un nuevo socket TCP IPv4
+hostSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)  # Configura la opción de socket para reutilizar la dirección
+
+hostIp = "192.168.100.16"  # Dirección IP en la que el servidor escuchará conexiones
+portNumber = 7500  # Número de puerto en el que el servidor escuchará conexiones
+
+hostSocket.bind((hostIp, portNumber))  # Enlaza el socket a la dirección IP y el número de puerto
+hostSocket.listen()  # Pone el socket en modo de escucha para aceptar conexiones entrantes
+
+print("Esperando conexion...")  # Mensaje indicando que el servidor está esperando conexiones
+
+# Bucle para aceptar conexiones entrantes y manejarlas en hilos separados
+while True:
+    clientSocket, clientAddress = hostSocket.accept()  # Acepta una nueva conexión y devuelve el socket y la dirección del cliente
+    clientes.add(clientSocket)  # Agrega el socket del cliente al conjunto de clientes conectados
+    print("Conexion establecida con: ", clientAddress[0] + ":" + str(clientAddress[1]))  # Mensaje de conexión establecida
+    # Crea un nuevo hilo para manejar la comunicación con el cliente y pasa los argumentos necesarios
+    thread = Thread(target=clientThread, args=(clientSocket, clientAddress, ))
+    thread.start()  # Inicia el hilo para manejar la comunicación con el cliente
